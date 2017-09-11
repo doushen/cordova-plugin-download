@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.open.open2u;
+package com.open.oces.weixueba;
 
 import android.os.Bundle;
 
