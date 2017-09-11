@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="cordova-plugin-download" version="1.0.0"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Download</name>
+    <description>下载管理</description>
+    <js-module name="Download" src="www/Download.js">
+        <clobbers target="window.plugins.download"/>
+    </js-module>
+    
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Download">
+                <param name="android-package" value="cordova.plugins.Download"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+
+            <service android:exported="false" android:name="com.open.downloader.service.DownloadService">
+                <intent-filter>
+                    <action android:name="com.open.downloader.downloadservice" />
+                </intent-filter>
+            </service>
+        </config-file>
+
+        <source-file src="src/android/Download.java" target-dir="src/cordova/plugins"/>
+        <source-file src="src/android/com/open/downloader/utils/StorageUtils.java"  target-dir="src/com/open/downloader/utils"/>
+        <resource-file src="src/android/filedownloader.properties" target="assets/filedownloader.properties" />
+        <resource-file src="src/android/MainActivity.java" target="src/com/open/open2u/MainActivity.java" />
+
+        <framework src="com.liulishuo.filedownloader:library:1.6.4" />
+
+    </platform>
+    <platform name="ios">
+
+        <config-file parent="/*" target="config.xml">
+            <feature name="Download">
+                <param name="ios-package" value="DCPDownload" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/DCPDownload.h"/>
+        <source-file src="src/ios/DCPDownload.m"/>
+
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFHTTPRequestOperation.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFHTTPRequestOperation.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFHTTPSessionManager.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFHTTPSessionManager.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFNetworking.h"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFNetworkReachabilityManager.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFNetworkReachabilityManager.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFSecurityPolicy.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFSecurityPolicy.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFURLConnectionOperation.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFURLConnectionOperation.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFURLRequestSerialization.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFURLRequestSerialization.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFURLResponseSerialization.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFURLResponseSerialization.m"/>
+        <header-file src="src/ios/AFNetworking/AFNetworking/AFURLSessionManager.h"/>
+        <source-file src="src/ios/AFNetworking/AFNetworking/AFURLSessionManager.m"/>
+        <header-file src="src/ios/AFNetworking/DownloadTools.h"/>
+        <source-file src="src/ios/AFNetworking/DownloadTools.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIAlertView+AFNetworking.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIAlertView+AFNetworking.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIButton+AFNetworking.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIButton+AFNetworking.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIImage+AFNetworking.h"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIImageView+AFNetworking.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIImageView+AFNetworking.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIKit+AFNetworking.h"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIProgressView+AFNetworking.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIProgressView+AFNetworking.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"/>
+        <header-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIWebView+AFNetworking.h"/>
+        <source-file src="src/ios/AFNetworking/UIKit+AFNetworking/UIWebView+AFNetworking.m"/>
+
+        <framework src="AssetsLibrary.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="MobileCoreServices.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="security.framework" />
+        
+    </platform>
+</plugin>

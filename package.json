@@ -1,0 +1,21 @@
+{
+  "name": "cordova-plugin-download",
+  "version": "1.0.1",
+  "description": "cordova downlaod file",
+  "cordova": {
+    "id": "cordova-plugin-download",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "download"
+  ],
+  "author": "liyn",
+  "license": "MIT"
+}
