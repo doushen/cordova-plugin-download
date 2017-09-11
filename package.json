@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-download",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cordova downlaod file",
   "cordova": {
     "id": "cordova-plugin-download",
@@ -8,6 +8,10 @@
       "android",
       "ios"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doushen/cordova-plugin-download.git"
   },
   "main": "index.js",
   "scripts": {
